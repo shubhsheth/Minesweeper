@@ -1,10 +1,10 @@
-#Minesweeper
+# Minesweeper
 
-##Shubh
+## Shubh
 * Parta
 * Partb
 
 
-##Jacob
+## Jacob
 * Partc
 * Partd
