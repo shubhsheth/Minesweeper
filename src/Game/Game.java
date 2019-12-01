@@ -66,24 +66,32 @@ public class Game {
 	
 	private void assignValues() {
 		for ( int i = 0; i < 100; i++ ) {
+			System.out.println("here");
+			
+			int surroundingMines = 0;
 			
 			// Get Cell
 			Cell cell = getCellByID(i);
 			
 			// Get All Surrounding Cells
-			/* Surrounding Map
-		 	a b c
-		 	d X e
-		 	f g h
-			*/
-			
-			Cell a = getCellByID(i);
-			
+			int surroundingCells[] = new int[] {-11,-10,-9,-1,1,9,10,11};
+
 			// Check for Mines
+			for (int j = 0; j < 8; j++) {
+				
+				int cellid = i + surroundingCells[j];
+				
+				if (cellid > 0) {
+					if (getCellByID(cellid).getValue() == "X") {						
+						surroundingMines++;
+					}
+				}
+			}
+			
 			// Update Current Cell
-			
-			
-			
+			if(surroundingMines > 0) {
+				cell.setValue(String.valueOf(surroundingMines));
+			}
 		}
 	}
 	

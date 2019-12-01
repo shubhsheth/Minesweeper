@@ -10,7 +10,7 @@ public class Cell implements ActionListener {
 	private JButton button;
 
 	private int id;
-	private String value;
+	private String value = "";
 	
 	private Boolean revealed;
 	private Boolean sealed;
