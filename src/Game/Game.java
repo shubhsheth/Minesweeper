@@ -17,20 +17,23 @@ public class Game {
 	private Cell[][] cells = new Cell[SIZE][SIZE];
 	
 	public Game() {
+		// Init
 		JFrame window = new JFrame("Minesweeper");
-		window.add(createGrid());
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
 		window.setSize(900, 900);
-
-        assignMines();
-        assignValues();
 		
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
+		window.add(createGrid());
+
+		// Update Buttons
+        assignMines();
+        assignValues(); 
     }
 	
 	public JPanel createGrid() {
 		JPanel panel = new JPanel(new GridLayout(SIZE,SIZE));
 		
+		//Create button for each grid block
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 				cells[i][j] = new Cell(this);
@@ -50,18 +53,26 @@ public class Game {
 
 		// Assign Mines Randomly
 		ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i = 0; i < 100; i++) {
-            list.add(new Integer(i));
-        }
-        Collections.shuffle(list); //unique random numbers from 0 - 99
-        
-        for ( int i = 0; i < this.totalMines; i++) {
-        	Cell cell = getCellByID(list.get(i));
-        	cell.setValue("X");
-        }
+		for (int i = 0; i < 100; i++) {
+		    list.add(new Integer(i));
+		}
+		Collections.shuffle(list); //unique random numbers from 0 - 99
+		
+		for ( int i = 0; i < this.totalMines; i++) {
+			Cell cell = getCellByID(list.get(i));
+			cell.setValue("X");
+		}
 	}
 	
 	private void assignValues() {
+		for ( int i = 0; i < 100; i++ ) {
+			
+			// To Do
+			
+		}
+	}
+	
+	public void revealEmptyCells(int id) {
 		// To Do
 	}
 	

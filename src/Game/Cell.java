@@ -12,26 +12,14 @@ public class Cell implements ActionListener {
 	private int id;
 	private String value;
 	
-//	private Boolean mined;
-	
 	private Boolean revealed;
 	private Boolean sealed;
 		
-	
 	public Cell(Game game) {
-		
 		button = new JButton();
 		this.game = game;
-//		
-//		this.x = x;
-//		this.y = y;
-//		this.mined = mined;
-//		revealed = false;
-//		sealed = false;
-//		
-//		setText("");
-//		if (mined)
-//			setText("M");
+		revealed = false;
+		sealed = false;
 	}
 	
 	public int getID() {
@@ -44,7 +32,6 @@ public class Cell implements ActionListener {
 	
 	public JButton getButton() {
 		return button;
-		
 	}
 	
 	public void setValue(String val) {
@@ -52,8 +39,20 @@ public class Cell implements ActionListener {
 		button.setText(val);
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+	private void reveal() {
+		// To Do
+	}
+	
+	private void seal() {
+		// To Do
+	}
+	
+	private void unseal() {
 		
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		// To Do
 	}
 	
 }
