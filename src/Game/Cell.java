@@ -39,6 +39,10 @@ public class Cell implements ActionListener {
 		button.setText(val);
 	}
 	
+	public String getValue() {
+		return this.value;
+	}
+	
 	private void reveal() {
 		// To Do
 	}

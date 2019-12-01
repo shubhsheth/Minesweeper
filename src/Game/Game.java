@@ -67,7 +67,22 @@ public class Game {
 	private void assignValues() {
 		for ( int i = 0; i < 100; i++ ) {
 			
-			// To Do
+			// Get Cell
+			Cell cell = getCellByID(i);
+			
+			// Get All Surrounding Cells
+			/* Surrounding Map
+		 	a b c
+		 	d X e
+		 	f g h
+			*/
+			
+			Cell a = getCellByID(i);
+			
+			// Check for Mines
+			// Update Current Cell
+			
+			
 			
 		}
 	}
