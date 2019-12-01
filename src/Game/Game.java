@@ -47,9 +47,9 @@ public class Game {
 	
 	private void assignMines() {
 		
-		// Number of Mines - between 20 and 30
+		// Number of Mines - between 10 and 20
 		Random r = new Random();
-		this.totalMines = (int) r.nextInt((30 - 20) + 1) + 20;
+		this.totalMines = (int) r.nextInt((20 - 10) + 1) + 10;
 
 		// Assign Mines Randomly
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -66,12 +66,16 @@ public class Game {
 	
 	private void assignValues() {
 		for ( int i = 0; i < 100; i++ ) {
-			System.out.println("here");
 			
 			int surroundingMines = 0;
 			
 			// Get Cell
 			Cell cell = getCellByID(i);
+			
+			// Check if cell is a mine
+			if (cell.getValue() == "X") {
+				continue;
+			}
 			
 			// Get All Surrounding Cells
 			int surroundingCells[] = new int[] {-11,-10,-9,-1,1,9,10,11};
@@ -81,7 +85,7 @@ public class Game {
 				
 				int cellid = i + surroundingCells[j];
 				
-				if (cellid > 0) {
+				if (cellid > 0 && cellid < 100) {
 					if (getCellByID(cellid).getValue() == "X") {						
 						surroundingMines++;
 					}
@@ -96,7 +100,39 @@ public class Game {
 	}
 	
 	public void revealEmptyCells(int id) {
-		// To Do
+		
+		Cell cell = getCellByID(id);
+		
+		if (cell.getValue() != "") {
+			return;
+		}
+		
+		ArrayList<Cell> emptyCells = new ArrayList<Cell>();
+		emptyCells.add(cell);
+		
+		int i = 0;
+		while(i < emptyCells.size()) {
+			
+			// Reveal Cell
+			emptyCells.get(i).setValue("Rev");
+			
+			// Get All Surrounding Cells
+			int surroundingCells[] = new int[] {-11,-10,-9,-1,1,9,10,11};
+			
+			// Check for Empty
+			for (int j = 0; j < 8; j++) {
+				
+				int cellid = i + surroundingCells[j];
+				
+				if (cellid > 0 && cellid < 100) {
+					if (getCellByID(cellid).getValue() == "") {
+						emptyCells.add(getCellByID(cellid));
+					}
+				}
+			}
+			
+			i++;
+		}
 	}
 	
 	public int getID() {
