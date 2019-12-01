@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import Game.Cell;
 
 public class Game {
 	private static final int MINES = 10;
@@ -17,28 +18,10 @@ public class Game {
 	
 	private Cell[][] board;
 	
-	private class Cell extends JButton {
-		private final int x;
-		private final int y;
-		private Boolean revealed;
-		private Boolean sealed;
-		private Boolean mined;
-		
-		Cell(final int x, final int y, final Boolean mined) {
-			this.x = x;
-			this.y = y;
-			this.mined = mined;
-			revealed = false;
-			sealed = false;
-			
-			setText("");
-			if (mined)
-				setText("M");
-		}
-	}
 	
-	public Game(final int width) {
-        board = new Cell[width][width];
+	
+	public Game() {
+        board = new Cell[WIDTH][WIDTH];
 
         window = new JFrame("Minesweeper");
         window.setSize(300, 200);
