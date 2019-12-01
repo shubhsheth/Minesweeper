@@ -1,51 +1,76 @@
 package Game;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.util.Random;
+import javax.swing.*;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import java.util.Random;
 
 import Game.Cell;
 
 public class Game {
-	private static final int MINES = 10;
-	private static final int WIDTH = 10;
 	
-	private JFrame window;
 	
-	private Cell[][] board;
+	private static final int SIZE = 10;
 	
+	private Cell[][] cells;
+	private int cellID = 0;
 	
 	
 	public Game() {
-        board = new Cell[WIDTH][WIDTH];
+		JFrame window = new JFrame("Minesweeper");
+		window.add(createGrid());
+		window.setSize(600, 600);
+		
+        cells = new Cell[SIZE][SIZE];
 
-        window = new JFrame("Minesweeper");
-        window.setSize(300, 200);
-        window.setLayout(new BorderLayout());
-
-        createGrid();
-
-        window.setLocationRelativeTo(null);
+        plantMines();
+        setCellValues();
+        
+        Cell cel = getCellByID(2);
+        cel.button.setText("Test");
+        
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
     }
 	
-	private void createGrid() {
-		Container grid = new Container();
-		Random r = new Random();
+	public JPanel createGrid() {
+		JPanel panel = new JPanel(new GridLayout(SIZE,SIZE));
+		cells = new Cell[SIZE][SIZE];
 		
-		grid.setLayout(new GridLayout(WIDTH, WIDTH));
-		
-		for (int i = 0; i < WIDTH; i++) {
-			for (int j = 0; j < WIDTH; j++) {
-				board[i][j] = new Cell(i, j, r.nextBoolean());
-				grid.add(board[i][j]);
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				cells[i][j] = new Cell(this);
+				cells[i][j].setID(getID());
+				panel.add(cells[i][j].getButton());
 			}
 		}
-		window.add(grid, BorderLayout.CENTER);
+		
+		return panel;
 	}
+	
+	public void setGame() {
+		
+	}
+	
+	private void plantMines() {
+		
+	}
+	
+	private void setCellValues() {
+		
+	}
+	
+	public int getID() {
+		int id = this.cellID;
+		this.cellID++;
+		return id;
+	}
+	
+	public Cell getCellByID(int id) {
+		int i = id / 10;
+		int j = id % 10;
+		return cells[i][j];
+		
+	}
+	
 }
