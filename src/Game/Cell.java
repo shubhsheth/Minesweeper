@@ -5,20 +5,23 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Cell implements ActionListener {
+
 	private Game game;
-//	private final int x;
-//	private final int y;
+	private JButton button;
+
+	private int id;
+	private String value;
+	
+//	private Boolean mined;
+	
 	private Boolean revealed;
 	private Boolean sealed;
-	private Boolean mined;
-	private int id;
-	public JButton button;
-	
+		
 	
 	public Cell(Game game) {
 		
 		button = new JButton();
-		
+		this.game = game;
 //		
 //		this.x = x;
 //		this.y = y;
@@ -44,8 +47,9 @@ public class Cell implements ActionListener {
 		
 	}
 	
-	public void setValue(String text) {
-		button.setText(text);
+	public void setValue(String val) {
+		this.value = val;
+		button.setText(val);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
