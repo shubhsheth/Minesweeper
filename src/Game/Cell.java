@@ -104,6 +104,7 @@ public class Cell implements ActionListener,MouseListener {
 		} else {
 			reveal();
 		}
+		game.checkForWin();
 	}
 	
 
@@ -114,6 +115,7 @@ public class Cell implements ActionListener,MouseListener {
 			else
 				unseal();
 		}
+		game.checkForWin();
     }
      
     public void mouseReleased(MouseEvent e) {}

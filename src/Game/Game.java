@@ -192,6 +192,22 @@ public class Game {
         assignValues(); 
 	}
 	
+	public void checkForWin() {
+		Boolean win = true;
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				if (cells[i][j].getValue() == "X" && !cells[i][j].sealed) {
+					win = false;
+				}
+				if (cells[i][j].getValue() != "X" && !cells[i][j].revealed) {
+					win = false;
+				}
+			}
+		}
+		if (win)
+			success();
+	}
+	
 
 	public void success() {
 		JOptionPane.showMessageDialog(null, "You Won!");
