@@ -84,10 +84,19 @@ public class Cell implements ActionListener {
 		button.setForeground(Color.blue);
 		button.setText("S");
 	}
-	
+
 	private void unseal() {
 		sealed = false;
 		button.setText("");
+	}
+	
+	public void reset() {
+		button.setText("");
+		value = "";
+		revealed = false;
+		sealed = false;
+		button.repaint();
+		button.setBackground(null);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -95,8 +104,8 @@ public class Cell implements ActionListener {
 		if (value == "") {
 			game.revealEmptyCells(id);
 		} else if (value == "X") {
-			game.fail();
 			reveal();
+			game.fail();
 		} else {
 			reveal();
 		}

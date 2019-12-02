@@ -21,6 +21,7 @@ public class Game {
 	public Game() {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(900, 900);				
+		
     }
 	
 	public void setGame() {
@@ -164,8 +165,14 @@ public class Game {
 	}
 	
 	
-	
 	public void fail() {
-		JOptionPane.showMessageDialog(null, "java is fun");
+		JOptionPane.showMessageDialog(null, "You Lost!");
+		for (int i = 0; i < 100; i++) {
+			Cell button = getCellByID(i);
+			button.reset();
+		}
+
+        assignMines();
+        assignValues(); 
 	}
 }
