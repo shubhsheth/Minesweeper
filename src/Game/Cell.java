@@ -40,7 +40,6 @@ public class Cell implements ActionListener {
 	
 	public void setValue(String val) {
 		this.value = val;
-		//button.setText(val);
 	}
 	
 	public String getValue() {
@@ -74,6 +73,7 @@ public class Cell implements ActionListener {
 	
 	private void seal() {
 		sealed = true;
+		button.setForeground(Color.blue);
 		button.setText("S");
 	}
 	
