@@ -12,7 +12,7 @@ public class Cell implements ActionListener {
 	private int id;
 	private String value = "";
 	
-	private Boolean revealed;
+	public Boolean revealed;
 	private Boolean sealed;
 		
 	public Cell(Game game) {
@@ -43,8 +43,10 @@ public class Cell implements ActionListener {
 		return this.value;
 	}
 	
-	private void reveal() {
+	public void reveal() {
 		// To Do
+		button.setBackground(Color.WHITE);
+		revealed = true;
 	}
 	
 	private void seal() {
