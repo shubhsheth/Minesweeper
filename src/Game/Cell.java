@@ -67,6 +67,7 @@ public class Cell implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// To Do
 		setValue("Clicked");
+		game.fail();
 	}
 	
 }
