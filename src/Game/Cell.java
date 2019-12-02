@@ -17,6 +17,7 @@ public class Cell implements ActionListener {
 		
 	public Cell(Game game) {
 		button = new JButton();
+		button.addActionListener(this);
 		this.game = game;
 		revealed = false;
 		sealed = false;
@@ -65,6 +66,7 @@ public class Cell implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		// To Do
+		setValue("Clicked");
 	}
 	
 }

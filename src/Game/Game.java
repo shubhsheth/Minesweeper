@@ -15,21 +15,21 @@ public class Game {
 	private int cellID = 0;
 	private int totalMines;
 	
+	JFrame window = new JFrame("Minesweeper");
 	private Cell[][] cells = new Cell[SIZE][SIZE];
 	
 	public Game() {
-		// Init
-		JFrame window = new JFrame("Minesweeper");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		window.setSize(900, 900);
-		
+    }
+	
+	public void setGame() {
 		window.add(createGrid());
 
-		// Update Buttons
         assignMines();
         assignValues(); 
-    }
+	}
 	
 	public JPanel createGrid() {
 		JPanel panel = new JPanel(new GridLayout(SIZE,SIZE));
@@ -165,6 +165,10 @@ public class Game {
 		int i = id / 10;
 		int j = id % 10;
 		return cells[i][j];
+	}
+	
+	public void endGame () {
+		this.setGame();
 	}
 	
 }
