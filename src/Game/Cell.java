@@ -40,7 +40,7 @@ public class Cell implements ActionListener {
 	
 	public void setValue(String val) {
 		this.value = val;
-		button.setText(val);
+		//button.setText(val);
 	}
 	
 	public String getValue() {
@@ -50,6 +50,25 @@ public class Cell implements ActionListener {
 	public void reveal() {
 		button.setBackground(Color.WHITE);
 		revealed = true;
+		switch (value) {
+		case "1":
+		case "2":
+		case "3":
+		case "4":
+		case "5":
+		case "6":
+		case "7":
+		case "8":
+			button.setBackground(Color.green);
+			break;
+		case "X":
+			button.setForeground(Color.black);
+			button.setBackground(Color.red);
+			break;
+		default:
+			button.setBackground(Color.white);
+			button.setForeground(Color.black);
+		}
 		button.setText(value);
 	}
 	
