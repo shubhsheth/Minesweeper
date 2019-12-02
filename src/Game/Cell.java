@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Cell implements ActionListener {
+public class Cell implements ActionListener,MouseListener {
 
 	private Game game;
 	private JButton button;
@@ -24,6 +24,7 @@ public class Cell implements ActionListener {
 		sealed = false;
 		button.addActionListener(actionListener);
 		button.setText("");
+		button.addMouseListener(this);
 	}
 	
 	public int getID() {
@@ -110,5 +111,20 @@ public class Cell implements ActionListener {
 			reveal();
 		}
 	}
+	
+
+	public void mousePressed(MouseEvent e) {
+		if (e.getButton() == MouseEvent.BUTTON3) {
+			System.out.println("Right Click");
+		}
+    }
+     
+    public void mouseReleased(MouseEvent e) {}
+     
+    public void mouseEntered(MouseEvent e) {}
+     
+    public void mouseExited(MouseEvent e) {}
+     
+    public void mouseClicked(MouseEvent e) {}
 	
 }

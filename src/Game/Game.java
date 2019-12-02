@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import Game.Cell;
 
@@ -22,7 +25,9 @@ public class Game {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(900, 900);				
 		
+		
     }
+	
 	
 	public void setGame() {
 		window.add(createGrid());
@@ -175,4 +180,5 @@ public class Game {
         assignMines();
         assignValues(); 
 	}
+	
 }
