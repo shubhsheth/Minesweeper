@@ -39,7 +39,6 @@ public class Cell implements ActionListener {
 	
 	public void setValue(String val) {
 		this.value = val;
-		//button.setText(value);
 	}
 	
 	public String getValue() {
@@ -47,9 +46,9 @@ public class Cell implements ActionListener {
 	}
 	
 	public void reveal() {
-		// To Do
 		button.setBackground(Color.WHITE);
 		revealed = true;
+		button.setText(value);
 	}
 	
 	private void seal() {
@@ -67,7 +66,7 @@ public class Cell implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		setValue("Clicked");
+		reveal();
 	}
 	
 }
