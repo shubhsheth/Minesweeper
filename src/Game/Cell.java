@@ -50,11 +50,17 @@ public class Cell implements ActionListener {
 	}
 	
 	private void seal() {
-		// To Do
+		if (!revealed) {
+			sealed = true;
+			setValue("S");
+		}
 	}
 	
 	private void unseal() {
-		
+		if (!revealed && sealed) {
+			sealed = false;
+			setValue("");
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
