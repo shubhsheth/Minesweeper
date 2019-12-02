@@ -3,6 +3,7 @@ package Game;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class Game {
 	public Game() {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		window.setSize(900, 900);
+		window.setSize(900, 900);				
     }
 	
 	public void setGame() {
@@ -117,11 +118,11 @@ public class Game {
 			// Get All Surrounding Cells
 			ArrayList<Integer> surroundingCells = new ArrayList<Integer>();
 			if(id % 10 == 0) { // left corner cells
-				//surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
+				surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
 			} else if (id % 10 == 9) { // right corner cells
-				//surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
+				surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
 			} else {
-				//surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
+				surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
 			}
 			
 			// Check for Empty
@@ -160,4 +161,9 @@ public class Game {
 		this.setGame();
 	}
 	
+	
+	
+	public void fail() {
+//		JOptionPane.showMessageDialog(null, "java is fun");
+	}
 }
