@@ -153,6 +153,15 @@ public class Game {
 		}
 	}
 	
+	public void revealMines () {
+		for (int i = 0; i < 100; i++) {
+			Cell cell = getCellByID(i);
+			if (cell.getValue() == "X") {
+				cell.reveal();
+			}
+		}
+	}
+	
 	public int getID() {
 		int id = this.cellID;
 		this.cellID++;
@@ -171,7 +180,20 @@ public class Game {
 	
 	
 	public void fail() {
+		revealMines();
 		JOptionPane.showMessageDialog(null, "You Lost!");
+		for (int i = 0; i < 100; i++) {
+			Cell button = getCellByID(i);
+			button.reset();
+		}
+
+        assignMines();
+        assignValues(); 
+	}
+	
+
+	public void success() {
+		JOptionPane.showMessageDialog(null, "You Won!");
 		for (int i = 0; i < 100; i++) {
 			Cell button = getCellByID(i);
 			button.reset();
