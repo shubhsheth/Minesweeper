@@ -101,21 +101,25 @@ public class Cell implements ActionListener,MouseListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
-		if (value == "") {
-			game.revealEmptyCells(id);
-		} else if (value == "X") {
-			reveal();
-			game.fail();
-		} else {
-			reveal();
+		if (!sealed) {
+			if (value == "") {
+				game.revealEmptyCells(id);
+			} else if (value == "X") {
+				reveal();
+				game.fail();
+			} else {
+				reveal();
+			}
 		}
 	}
 	
 
 	public void mousePressed(MouseEvent e) {
 		if (e.getButton() == MouseEvent.BUTTON3) {
-			System.out.println("Right Click");
+			if (!sealed)
+				seal();
+			else
+				unseal();
 		}
     }
      
