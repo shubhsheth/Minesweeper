@@ -23,6 +23,7 @@ public class Cell implements ActionListener {
 		revealed = false;
 		sealed = false;
 		button.addActionListener(actionListener);
+		button.setText("");
 	}
 	
 	public int getID() {
@@ -39,6 +40,7 @@ public class Cell implements ActionListener {
 	
 	public void setValue(String val) {
 		this.value = val;
+		button.setText(val);
 	}
 	
 	public String getValue() {
