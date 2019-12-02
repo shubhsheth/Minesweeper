@@ -8,6 +8,7 @@ public class Cell implements ActionListener {
 
 	private Game game;
 	private JButton button;
+	private ActionListener actionListener;
 
 	private int id;
 	private String value = "";
@@ -20,6 +21,7 @@ public class Cell implements ActionListener {
 		this.game = game;
 		revealed = false;
 		sealed = false;
+		button.addActionListener(actionListener);
 	}
 	
 	public int getID() {
@@ -36,33 +38,37 @@ public class Cell implements ActionListener {
 	
 	public void setValue(String val) {
 		this.value = val;
-		button.setText(val);
+		//button.setText(value);
 	}
 	
 	public String getValue() {
 		return this.value;
 	}
 	
-	private void reveal() {
-		// To Do
+	public void reveal() {
+		if (!revealed && !sealed) {
+			revealed = true;
+			button.setText(value);
+		}
 	}
 	
 	private void seal() {
-		if (!revealed) {
+		if (!revealed && !sealed) {
 			sealed = true;
-			setValue("S");
+			button.setText("S");
 		}
 	}
 	
 	private void unseal() {
-		if (!revealed && sealed) {
+		if (sealed) {
 			sealed = false;
-			setValue("");
+			button.setText("");
 		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		// To Do
+		this.reveal();
 	}
 	
 }

@@ -3,7 +3,6 @@ package Game;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -38,7 +37,7 @@ public class Game {
 		for (int i = 0; i < SIZE; i++) {
 			for (int j = 0; j < SIZE; j++) {
 				cells[i][j] = new Cell(this);
-				cells[i][j].setID(getNewID());
+				cells[i][j].setID(getID());
 				panel.add(cells[i][j].getButton());
 			}
 		}
@@ -79,22 +78,12 @@ public class Game {
 			}
 			
 			// Get All Surrounding Cells
-			ArrayList<Integer> surroundingCells = new ArrayList<Integer>();
-			if(i % 10 == 0) {
-				// left corner cells
-				surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
-			} else if (i % 10 == 9) {
-				// right corner cells
-				surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
-			} else {
-				surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
-			}
-			
+			int surroundingCells[] = new int[] {-11,-10,-9,-1,1,9,10,11};
 
 			// Check for Mines
-			for (int j = 0; j < surroundingCells.size(); j++) {
+			for (int j = 0; j < 8; j++) {
 				
-				int cellid = i + surroundingCells.get(j);
+				int cellid = i + surroundingCells[j];
 				
 				if (cellid > 0 && cellid < 100) {
 					if (getCellByID(cellid).getValue() == "X") {						
@@ -146,7 +135,7 @@ public class Game {
 		}
 	}
 	
-	public int getNewID() {
+	public int getID() {
 		int id = this.cellID;
 		this.cellID++;
 		return id;
