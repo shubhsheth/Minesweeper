@@ -29,8 +29,6 @@ public class Game {
 		// Update Buttons
         assignMines();
         assignValues(); 
-        
-        revealEmptyCells(2);
     }
 	
 	public JPanel createGrid() {
@@ -98,7 +96,7 @@ public class Game {
 				
 				int cellid = i + surroundingCells.get(j);
 				
-				if (cellid > 0 && cellid < 100) {
+				if (cellid > -1 && cellid < 100) {
 					if (getCellByID(cellid).getValue() == "X") {						
 						surroundingMines++;
 					}
@@ -129,11 +127,9 @@ public class Game {
 			
 			// Get All Surrounding Cells
 			ArrayList<Integer> surroundingCells = new ArrayList<Integer>();
-			if(id % 10 == 0) {
-				// left corner cells
+			if(id % 10 == 0) { // left corner cells
 				surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
-			} else if (id % 10 == 9) {
-				// right corner cells
+			} else if (id % 10 == 9) { // right corner cells
 				surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
 			} else {
 				surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
@@ -144,14 +140,13 @@ public class Game {
 				
 				int cellid = id + surroundingCells.get(j);
 				
-				if (cellid > 0 && cellid < 100) {
+				if (cellid > -1 && cellid < 100) {
 					Cell surCell = getCellByID(cellid);
-					if (cellid == 0) {
-						System.out.println("0 Here");
-					}
+					
 					if (surCell.getValue() == "") {
-						System.out.println(String.valueOf(cellid));
-						emptyCells.add(surCell);
+						if (surCell.revealed == false && !emptyCells.contains(surCell)) {
+							emptyCells.add(surCell);
+						}
 					}
 				}
 			}
