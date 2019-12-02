@@ -25,6 +25,7 @@ public class Game {
 	
 	public void setGame() {
 		window.add(createGrid());
+		window.setVisible(true);
 
         assignMines();
         assignValues(); 
@@ -118,11 +119,11 @@ public class Game {
 			// Get All Surrounding Cells
 			ArrayList<Integer> surroundingCells = new ArrayList<Integer>();
 			if(id % 10 == 0) { // left corner cells
-				surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
+				surroundingCells.addAll(Arrays.asList(-10,1,10));
 			} else if (id % 10 == 9) { // right corner cells
-				surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
+				surroundingCells.addAll(Arrays.asList(-10,-1,10));
 			} else {
-				surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
+				surroundingCells.addAll(Arrays.asList(-10,-1,1,10));
 			}
 			
 			// Check for Empty
@@ -137,6 +138,8 @@ public class Game {
 						if (surCell.revealed == false && !emptyCells.contains(surCell)) {
 							emptyCells.add(surCell);
 						}
+					} else if (surCell.getValue() != "X") {
+						surCell.reveal();
 					}
 				}
 			}
@@ -164,6 +167,6 @@ public class Game {
 	
 	
 	public void fail() {
-//		JOptionPane.showMessageDialog(null, "java is fun");
+		JOptionPane.showMessageDialog(null, "java is fun");
 	}
 }

@@ -47,8 +47,16 @@ public class Cell implements ActionListener {
 	}
 	
 	public void reveal() {
-		button.setBackground(Color.WHITE);
+		
 		revealed = true;
+//		if (value == "") {
+//			game.revealEmptyCells(id);
+//		} else if (value == "X") {
+//			
+//		}
+//		
+//		
+		button.setBackground(Color.WHITE);
 		switch (value) {
 		case "1":
 		case "2":
@@ -83,7 +91,15 @@ public class Cell implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		reveal();
+		
+		if (value == "") {
+			game.revealEmptyCells(id);
+		} else if (value == "X") {
+			game.fail();
+			reveal();
+		} else {
+			reveal();
+		}
 	}
 	
 }
