@@ -52,17 +52,13 @@ public class Cell implements ActionListener {
 	}
 	
 	private void seal() {
-		if (!revealed && !sealed) {
-			sealed = true;
-			button.setText("S");
-		}
+		sealed = true;
+		button.setText("S");
 	}
 	
 	private void unseal() {
-		if (sealed) {
-			sealed = false;
-			button.setText("");
-		}
+		sealed = false;
+		button.setText("");
 	}
 	
 	public void actionPerformed(ActionEvent e) {
