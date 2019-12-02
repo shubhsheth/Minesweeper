@@ -2,6 +2,8 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,7 +23,7 @@ public class Game {
 	public Game() {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
-		window.setSize(900, 900);
+		window.setSize(900, 900);				
     }
 	
 	public void setGame() {
@@ -171,4 +173,9 @@ public class Game {
 		this.setGame();
 	}
 	
+	
+	
+	public void fail() {
+		JOptionPane.showMessageDialog(null, "java is fun");
+	}
 }
