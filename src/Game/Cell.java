@@ -48,36 +48,31 @@ public class Cell implements ActionListener,MouseListener {
 	}
 	
 	public void reveal() {
-		
-		revealed = true;
-//		if (value == "") {
-//			game.revealEmptyCells(id);
-//		} else if (value == "X") {
-//			
-//		}
-//		
-//		
-		button.setBackground(Color.WHITE);
-		switch (value) {
-		case "1":
-		case "2":
-		case "3":
-		case "4":
-		case "5":
-		case "6":
-		case "7":
-		case "8":
-			button.setBackground(Color.green);
-			break;
-		case "X":
-			button.setForeground(Color.black);
-			button.setBackground(Color.red);
-			break;
-		default:
-			button.setBackground(Color.white);
-			button.setForeground(Color.black);
+		if (!sealed) {
+			revealed = true;
+		//		
+			button.setBackground(Color.WHITE);
+			switch (value) {
+			case "1":
+			case "2":
+			case "3":
+			case "4":
+			case "5":
+			case "6":
+			case "7":
+			case "8":
+				button.setBackground(Color.green);
+				break;
+			case "X":
+				button.setForeground(Color.black);
+				button.setBackground(Color.red);
+				break;
+			default:
+				button.setBackground(Color.white);
+				button.setForeground(Color.black);
+			}
+			button.setText(value);
 		}
-		button.setText(value);
 	}
 	
 	private void seal() {
@@ -101,15 +96,13 @@ public class Cell implements ActionListener,MouseListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if (!sealed) {
-			if (value == "") {
-				game.revealEmptyCells(id);
-			} else if (value == "X") {
-				reveal();
-				game.fail();
-			} else {
-				reveal();
-			}
+		if (value == "" && !sealed) {
+			game.revealEmptyCells(id);
+		} else if (value == "X" && !sealed) {
+			reveal();
+			game.fail();
+		} else {
+			reveal();
 		}
 	}
 	
