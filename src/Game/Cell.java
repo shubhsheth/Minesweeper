@@ -13,7 +13,7 @@ public class Cell implements ActionListener {
 	private String value = "";
 	
 	public Boolean revealed;
-	private Boolean sealed;
+	public Boolean sealed;
 		
 	public Cell(Game game) {
 		button = new JButton();
