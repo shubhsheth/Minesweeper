@@ -20,7 +20,6 @@ public class Game {
 	
 	public Game() {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
 		window.setSize(900, 900);				
     }
 	
@@ -29,6 +28,7 @@ public class Game {
 
         assignMines();
         assignValues(); 
+        window.setVisible(true);
 	}
 	
 	public JPanel createGrid() {
