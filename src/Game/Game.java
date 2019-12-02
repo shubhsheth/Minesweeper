@@ -14,21 +14,21 @@ public class Game {
 	private int cellID = 0;
 	private int totalMines;
 	
+	JFrame window = new JFrame("Minesweeper");
 	private Cell[][] cells = new Cell[SIZE][SIZE];
 	
 	public Game() {
-		// Init
-		JFrame window = new JFrame("Minesweeper");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setVisible(true);
 		window.setSize(900, 900);
-		
+    }
+	
+	public void setGame() {
 		window.add(createGrid());
 
-		// Update Buttons
         assignMines();
         assignValues(); 
-    }
+	}
 	
 	public JPanel createGrid() {
 		JPanel panel = new JPanel(new GridLayout(SIZE,SIZE));
@@ -85,7 +85,7 @@ public class Game {
 				
 				int cellid = i + surroundingCells[j];
 				
-				if (cellid > 0 && cellid < 100) {
+				if (cellid > -1 && cellid < 100) {
 					if (getCellByID(cellid).getValue() == "X") {						
 						surroundingMines++;
 					}
@@ -101,32 +101,41 @@ public class Game {
 	
 	public void revealEmptyCells(int id) {
 		
-		Cell cell = getCellByID(id);
-		
-		if (cell.getValue() != "") {
-			return;
-		}
+		Cell selectedCell = getCellByID(id);
 		
 		ArrayList<Cell> emptyCells = new ArrayList<Cell>();
-		emptyCells.add(cell);
+		emptyCells.add(selectedCell);
 		
 		int i = 0;
 		while(i < emptyCells.size()) {
 			
 			// Reveal Cell
-			emptyCells.get(i).setValue("Rev");
+			Cell cell = emptyCells.get(i);
+			id = cell.getID();
+			cell.reveal();
 			
 			// Get All Surrounding Cells
-			int surroundingCells[] = new int[] {-11,-10,-9,-1,1,9,10,11};
+			ArrayList<Integer> surroundingCells = new ArrayList<Integer>();
+			if(id % 10 == 0) { // left corner cells
+				surroundingCells.addAll(Arrays.asList(-10,-9,1,10,11));
+			} else if (id % 10 == 9) { // right corner cells
+				surroundingCells.addAll(Arrays.asList(-11,-10,-1,9,10));
+			} else {
+				surroundingCells.addAll(Arrays.asList(-11,-10,-9,-1,1,9,10,11));
+			}
 			
 			// Check for Empty
-			for (int j = 0; j < 8; j++) {
+			for (int j = 0; j < surroundingCells.size(); j++) {
 				
-				int cellid = i + surroundingCells[j];
+				int cellid = id + surroundingCells.get(j);
 				
-				if (cellid > 0 && cellid < 100) {
-					if (getCellByID(cellid).getValue() == "") {
-						emptyCells.add(getCellByID(cellid));
+				if (cellid > -1 && cellid < 100) {
+					Cell surCell = getCellByID(cellid);
+					
+					if (surCell.getValue() == "") {
+						if (surCell.revealed == false && !emptyCells.contains(surCell)) {
+							emptyCells.add(surCell);
+						}
 					}
 				}
 			}
@@ -145,6 +154,10 @@ public class Game {
 		int i = id / 10;
 		int j = id % 10;
 		return cells[i][j];
+	}
+	
+	public void endGame () {
+		this.setGame();
 	}
 	
 }

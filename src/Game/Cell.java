@@ -13,11 +13,12 @@ public class Cell implements ActionListener {
 	private int id;
 	private String value = "";
 	
-	private Boolean revealed;
-	private Boolean sealed;
+	public Boolean revealed;
+	public Boolean sealed;
 		
 	public Cell(Game game) {
 		button = new JButton();
+		button.addActionListener(this);
 		this.game = game;
 		revealed = false;
 		sealed = false;
@@ -46,10 +47,9 @@ public class Cell implements ActionListener {
 	}
 	
 	public void reveal() {
-		if (!revealed && !sealed) {
-			revealed = true;
-			button.setText(value);
-		}
+		// To Do
+		button.setBackground(Color.WHITE);
+		revealed = true;
 	}
 	
 	private void seal() {
@@ -67,8 +67,7 @@ public class Cell implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		// To Do
-		this.reveal();
+		setValue("Clicked");
 	}
 	
 }
